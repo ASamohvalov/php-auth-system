@@ -1,24 +1,34 @@
+<?php 
+session_start();
+
+if (!isset($_SESSION['config'])) {
+  header('Location: ../index.php');
+}
+
+$base_path = & $_SESSION['config']['base_path'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Page Title</title>
-    <link rel="stylesheet" href="<?= $bootstrap_path ?>">
+  <title><?= $page_title ?></title>
+  <link rel="stylesheet" href="<?= $base_path ?>/assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">AuthSystem</a>
+      <a class="navbar-brand" href="<?= $base_path ?>">AuthSystem</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="">Авторизация</a>
+            <a class="nav-link active" href="<?= $base_path ?>/views/sign_in.php">Авторизация</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Регистрация</a>
+            <a class="nav-link active" href="<?= $base_path ?>/views/sign_up.php">Регистрация</a>
           </li>
         </ul>
       </div>

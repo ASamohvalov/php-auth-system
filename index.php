@@ -1,8 +1,14 @@
 <?php
+
 session_start();
+
+require_once 'config.php';
+
+config_init();
 
 if (!isset($_SESSION['id'])) {
   header('Location: views/sign_in.php');
+  exit;
 }
 
 ob_start();
@@ -12,7 +18,7 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-$bootstrap_path = 'assets/bootstrap/css/bootstrap.min.css';
+$page_title = 'main';
 
-require_once "views/layouts/base_layout.php";
+require_once 'views/layouts/base_layout.php';
 ?>
