@@ -32,8 +32,8 @@ $password = $_POST['password'];
 validation($email, $password);
 
 $sql_select = 'select * from users where email = :email';
-$reult_array = perfom_and_get($sql_select, ['email' => $email]);
-if (empty($reult_array) || !password_verify($password, $result_array['password'])) {
+$result_array = perfom_and_get($sql_select, ['email' => $email]);
+if (empty($result_array[0]) || !password_verify($password, $result_array[0]['password'])) {
   $_SESSION['msg']['error']['global'] = 'неправильная почта или пароль';
   header('Location: ../views/sign_in.php');
   exit;
