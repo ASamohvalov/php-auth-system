@@ -8,12 +8,17 @@ function get_connection() : PDO
 {
   static $conn = null;
   if ($conn === null) {
+    $host = 'localhost';
+    $port = 3306;
+    $name = 'php_auth_system';
+    $user = 'phpuser';
+    $password = 'secret';
+
     $conn = new PDO(
-      "mysql:host=localhost;port=3306;dbname=php_auth_system", 
-      "root", 
-      ""
+      "mysql:host=$host;port=$port;dbname=$name", 
+      $user, 
+      $password
     );
   }
   return $conn;
 }
-

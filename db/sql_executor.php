@@ -1,0 +1,46 @@
+<?php
+
+require_once 'connection.php';
+
+/**
+* @desc queries without return result
+* @throw RuntimeException
+*/
+function perfom(string $sql, array $params = []) : void
+{
+  try {
+    $conn = get_connection();
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+      $stmt->bindValue($key, $value);
+    }
+    $stmt->execute();
+  } catch (PDOException $e) {
+    throw new RuntimeException($e->getMessage());
+  }
+}
+
+/**
+* @desc queries with return result
+* @throw RuntimeException
+*/
+function perfom_and_get(string $sql, array $params = []) : array
+{
+  try {
+    $conn = get_connection();
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+      $stmt->bindValue($key, $value);
+    }
+    $stmt->execute();
+
+    $result_arr = [];
+    while ($row = $stmt->fetch()) {
+      $result_arr = [$row];
+    }
+    return $result_arr;
+  } catch (PDOException $e) {
+    throw new RuntimeException($e->getMessage());
+  }
+}
+

@@ -16,7 +16,7 @@ ob_start();
       >
       <div class="text-danger mb-3"><?= $_SESSION['msg']['error']['email'] ?></div>
       <input type="password" 
-        class="form-control <?= isset($_SESSION['msg']['error']['email']) ? 'is-invalid' : '' ?>" 
+        class="form-control <?= isset($_SESSION['msg']['error']['password']) ? 'is-invalid' : '' ?>" 
         placeholder="пароль" 
         name="password"
       >
@@ -42,6 +42,7 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+$page_title = 'регистрация';
 
 require_once 'layouts/base_layout.php';
 

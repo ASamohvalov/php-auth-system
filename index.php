@@ -5,7 +5,7 @@ require_once 'config.php';
 
 config_init();
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user']['id'])) {
   header('Location: views/sign_in.php');
   exit;
 }
@@ -14,6 +14,7 @@ ob_start();
 ?>
 
 <h1>content!!!</h1>
+<span>email = <?= $_SESSION['user']['email'] ?></span>
 
 <?php
 $content = ob_get_clean();

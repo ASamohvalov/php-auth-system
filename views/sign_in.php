@@ -21,6 +21,7 @@ ob_start();
         name="password"
       >
       <div class="text-danger mb-3"><?= $_SESSION['msg']['error']['password'] ?></div>
+      <div class="text-danger mb-3"><?= $_SESSION['msg']['error']['global'] ?></div>
       <button type="submit" class="btn btn-primary">войти</button>
     </form>
   </div>
@@ -28,6 +29,7 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
+$page_title = 'авторизация';
 
 require_once 'layouts/base_layout.php';
 
