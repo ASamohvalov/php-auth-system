@@ -1,7 +1,8 @@
 <?php
 
 /**
-* throw PDOException
+* @throw PDOException
+* @return PDO
 */
 function get_connection() : PDO
 {
