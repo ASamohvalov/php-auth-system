@@ -5,8 +5,8 @@ ob_start();
 ?>
 
 <main>
-  <div class="mx-auto bg-dark p-5 shadow" style="width: 500px; margin-top: 10%">
-    <div class="fs-4 text-center mb-4">Регистрация</div>
+  <div class="mx-auto bg-dark p-5 shadow text-white" style="width: 500px; margin-top: 10%">
+    <div class="fs-4 text-center mb-4 text-dark">Регистрация</div>
     <form action="../requests/sign_up_request.php" method="post">
       <input 
         type="email" 
@@ -35,6 +35,7 @@ ob_start();
         name="surname"
       >
       <div class="text-danger mb-3"><?= $_SESSION['msg']['error']['surname'] ?></div>
+      <div class="text-danger mb-3"><?= $_SESSION['msg']['error']['global'] ?></div>
       <button type="submit" class="btn btn-primary">войти</button>
     </form>
   </div>

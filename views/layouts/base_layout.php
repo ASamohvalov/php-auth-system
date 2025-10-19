@@ -16,10 +16,10 @@ $base_path = & $_SESSION['config']['base_path'];
   <title><?= $page_title ?></title>
   <link rel="stylesheet" href="<?= $base_path ?>/assets/bootstrap/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: #181a1b">
 
 <div class="container">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow">
     <div class="container-fluid">
       <a class="navbar-brand" href="<?= $base_path ?>">AuthSystem</a>
       <div class="collapse navbar-collapse">

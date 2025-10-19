@@ -33,12 +33,7 @@ function perfom_and_get(string $sql, array $params = []) : array
       $stmt->bindValue($key, $value);
     }
     $stmt->execute();
-
-    $result_arr = [];
-    while ($row = $stmt->fetch()) {
-      $result_arr = [$row];
-    }
-    return $result_arr;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   } catch (PDOException $e) {
     throw new RuntimeException($e->getMessage());
   }

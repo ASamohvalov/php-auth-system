@@ -43,8 +43,9 @@ $surname = $_POST['surname'];
 validation($email, $password, $name, $surname);
 
 // check email unique
-$sql_select = 'select count(*) from users where email = :email';
-if (!empty(perfom_and_get($sql_select, ['email' => $email]))) {
+$sql_select = 'select count(*) as cnt from users where email = :email';
+$result = perfom_and_get($sql_select, ['email' => $email]);
+if ($result['0']['cnt'] > 0) {
   $_SESSION['msg']['error']['email'] = 'данная почта уже занята';
   header('Location: ../views/sign_up.php');
   exit;

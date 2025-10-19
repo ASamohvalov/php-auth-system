@@ -45,4 +45,4 @@ $_SESSION['user']['email'] = $result_array['email'];
 $_SESSION['user']['name'] = $result_array['name'];
 $_SESSION['user']['surname'] = $result_array['surname'];
 
-header('Location: ..');
+header('Location: ../index.php');
