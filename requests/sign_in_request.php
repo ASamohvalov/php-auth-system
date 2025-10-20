@@ -40,9 +40,9 @@ if (empty($result_array[0]) || !password_verify($password, $result_array[0]['pas
 }
 
 // corect data
-$_SESSION['user']['id'] = $result_array['id'];
-$_SESSION['user']['email'] = $result_array['email'];
-$_SESSION['user']['name'] = $result_array['name'];
-$_SESSION['user']['surname'] = $result_array['surname'];
+$_SESSION['user']['id'] = $result_array[0]['id'];
+$_SESSION['user']['email'] = $result_array[0]['email'];
+$_SESSION['user']['name'] = $result_array[0]['name'];
+$_SESSION['user']['surname'] = $result_array[0]['surname'];
 
 header('Location: ../index.php');
