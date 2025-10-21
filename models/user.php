@@ -5,7 +5,7 @@ require_once '../db/sql_executor.php';
 class User
 {
   public function __construct(
-      public int $id,
+      public ?int $id,
       public string $email,
       public string $password,
       public string $name,
@@ -27,17 +27,20 @@ class User
     return password_verify($password, $this->password);
   }
 
-  public static function exists_by_email(string $email) : bool
+  public function exists_by_email() : bool
   {
     $sql_select = 'select count(*) as cnt from users where email = :email';
-    $result = perfom_and_get($sql_select, ['email' => $email]);
-    return $result['0']['cnt'] == 0;
+    $result = perfom_and_get($sql_select, ['email' => $this->email]);
+    return $result['0']['cnt'] > 0;
   }
 
-  public static function get_by_email(string $email) : User
+  public static function get_by_email(string $email) : ?User
   {
     $sql_select = 'select * from users where email = :email';
     $result_array = perfom_and_get($sql_select, ['email' => $email]);
+    if (empty($result_array[0])) {
+      return null;
+    }
     return new User(
       $result_array[0]['id'],
       $result_array[0]['email'],

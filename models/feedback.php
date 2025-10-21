@@ -1,12 +1,11 @@
 <?php
-session_start();
 
 require_once '../db/sql_executor.php';
 
 class Feedback
 {
   public function __construct(
-      public string $id,
+      public ?int $id,
       public string $title,
       public string $message,
       public string $request_type,

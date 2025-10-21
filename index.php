@@ -5,7 +5,7 @@ require_once 'config.php';
 
 config_init();
 
-if (!isset($_SESSION['user']['id'])) {
+if (!isset($_SESSION['user'])) {
   header('Location: views/sign_in.php');
   exit;
 }

@@ -25,7 +25,7 @@ $base_path = & $_SESSION['config']['base_path'];
       <a class="navbar-brand" href="<?= $base_path ?>">AuthSystem</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
-          <?php if (isset($_SESSION['user']['id'])): ?>
+          <?php if (isset($_SESSION['user'])): ?>
             <li class="nav-item">
               <a class="nav-link active" href="<?= $base_path ?>/requests/logout_request.php">Выйти</a>
             </li>

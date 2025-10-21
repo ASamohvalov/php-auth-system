@@ -1,7 +1,8 @@
 <?php
-session_start();
 
-require_once '../db/sql_executor.php';
+require_once '../models/user.php';
+
+session_start();
 
 function validation(string $email, string $password) : void
 {
@@ -31,18 +32,16 @@ $password = $_POST['password'];
 
 validation($email, $password);
 
-$sql_select = 'select * from users where email = :email';
-$result_array = perfom_and_get($sql_select, ['email' => $email]);
-if (empty($result_array[0]) || !password_verify($password, $result_array[0]['password'])) {
+$user = User::get_by_email($email);
+if ($user == null || !$user->validate_password($password)) {
   $_SESSION['msg']['error']['global'] = 'неправильная почта или пароль';
   header('Location: ../views/sign_in.php');
   exit;
 }
 
-// corect data
-$_SESSION['user']['id'] = $result_array[0]['id'];
-$_SESSION['user']['email'] = $result_array[0]['email'];
-$_SESSION['user']['name'] = $result_array[0]['name'];
-$_SESSION['user']['surname'] = $result_array[0]['surname'];
+$_SESSION['user']['id'] = $user->id;
+$_SESSION['user']['email'] = $user->email;
+$_SESSION['user']['name'] = $user->name;
+$_SESSION['user']['surname'] = $user->surname;
 
 header('Location: ../index.php');
