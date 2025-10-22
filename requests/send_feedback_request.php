@@ -20,4 +20,6 @@ $feedback = new Feedback(
 
 $feedback->save();
 
+$_SESSION['msg']['success'] = 'сообщение успешно отправлено';
+
 header('Location: ../index.php');

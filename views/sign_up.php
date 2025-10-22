@@ -6,7 +6,7 @@ ob_start();
 
 <main>
   <div class="mx-auto bg-dark p-5 shadow text-white" style="width: 500px; margin-top: 10%">
-    <div class="fs-4 text-center mb-4 text-dark">Регистрация</div>
+    <div class="fs-4 text-center mb-4 text-while">Регистрация</div>
     <form action="../requests/sign_up_request.php" method="post">
       <input 
         type="email" 

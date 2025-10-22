@@ -23,14 +23,14 @@ ob_start();
 
     <div class="mb-3">
       <label for="message" class="form-label">Сообщение</label>
-      <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+      <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Тип обращения</label><br>
-      <input type="radio" name="type" value="question"> Вопрос
-      <input type="radio" name="type" value="complaint"> Жалоба
-      <input type="radio" name="type" value="suggestion"> Предложение
+      <input type="radio" name="type" value="question" required> Вопрос
+      <input type="radio" name="type" value="complaint" required> Жалоба
+      <input type="radio" name="type" value="suggestion" required> Предложение
     </div>
 
     <div class="mb-3">
@@ -51,6 +51,9 @@ ob_start();
     <button type="reset" class="btn btn-secondary">Сбросить</button>
     <button type="submit" class="btn btn-primary">Отправить</button>
   </form>
+  <div class="text-success mt-4" style="width: 500px">
+    <?= $_SESSION['msg']['success'] ?>
+  </div>
 </div>
 
 <?php
