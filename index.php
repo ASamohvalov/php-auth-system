@@ -2,13 +2,17 @@
 session_start();
 
 require_once 'config.php';
-
 config_init();
+
+require_once 'requests/get_user_feedback.php';
+
 
 if (!isset($_SESSION['user'])) {
   header('Location: views/sign_in.php');
   exit;
 }
+
+$feedback_array = get_user_feedback();
 
 ob_start();
 ?>
@@ -56,11 +60,6 @@ ob_start();
     <?= $_SESSION['msg']['success'] ?>
   </div>
 
-  <div class="mt-4 border-top border-secondary">
-    <a href="#" class="mt-4 btn btn-success">Показать отправленные сообщения</a>
-    
-  </div>
-  <!--
   <div class="">
     <?php foreach ($feedback_array as $feedback): ?>
     <div class="border">
@@ -71,7 +70,6 @@ ob_start();
     </div>   
     <?php endforeach; ?> 
   </div>
-  -->
 </div>
 
 <?php

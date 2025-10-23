@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-require_once '../db/sql_executor.php';
+require_once __DIR__ . '/../db/sql_executor.php';
 
 class Feedback
 {
@@ -25,18 +26,22 @@ class Feedback
     ]); 
   } 
 
-  public static function get_user_feedbacks(int $user_id) : Feedback 
+  public static function get_user_feedbacks(int $user_id) : array 
   {
     $sql_select = 'select * from feedback where user_id = :user_id';
     $result_array = perfom_and_get($sql_select, ['user_id' => $user_id]);
-    return new Feedback(
-      $result_array[0]['id'],
-      $result_array[0]['titile'],
-      $result_array[0]['message'],
-      $result_array[0]['request_type'],
-      $result_array[0]['rating'],
-      $result_array[0]['user_id']
-    );
+    $ret = [];
+    foreach ($result_array as $feedback) {
+      $ret[] = new Feedback(
+        $feedback['id'],
+        $feedback['titile'],
+        $feedback['message'],
+        $feedback['request_type'],
+        $feedback['rating'],
+        $feedback['user_id']
+      );
+    }
+    return $ret;
   }
 }
 
