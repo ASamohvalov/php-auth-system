@@ -14,8 +14,8 @@ class Feedback
 
   public function save() : void
   {
-   $sql_insert = 'insert into feedback (title, message, request_type, rating, user_id)' 
-    . 'values (:title, :message, :request_type, :rating, :user_id)';
+    $sql_insert = 'insert into feedback (title, message, request_type, rating, user_id)' 
+      . 'values (:title, :message, :request_type, :rating, :user_id)';
     perfom($sql_insert, [
       'title' => $this->title,
       'message' => $this->message,

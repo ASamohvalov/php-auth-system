@@ -51,9 +51,27 @@ ob_start();
     <button type="reset" class="btn btn-secondary">Сбросить</button>
     <button type="submit" class="btn btn-primary">Отправить</button>
   </form>
+
   <div class="text-success mt-4" style="width: 500px">
     <?= $_SESSION['msg']['success'] ?>
   </div>
+
+  <div class="mt-4 border-top border-secondary">
+    <a href="#" class="mt-4 btn btn-success">Показать отправленные сообщения</a>
+    
+  </div>
+  <!--
+  <div class="">
+    <?php foreach ($feedback_array as $feedback): ?>
+    <div class="border">
+      <span><?= $feedback->title ?></span>
+      <span><?= $feedback->message ?></span>
+      <span><?= $feedback->request_type ?></span>
+      <span><?= $feedback->rating ?></span>
+    </div>   
+    <?php endforeach; ?> 
+  </div>
+  -->
 </div>
 
 <?php
@@ -61,4 +79,6 @@ $content = ob_get_clean();
 $page_title = 'обратная связь';
 
 require_once 'views/layouts/base_layout.php';
+
+unset($_SESSION['msg']);
 ?>
