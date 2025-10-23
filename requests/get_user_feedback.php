@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-// костыль для обращения из index.php
-require_once $_SESSION['config']['base_dir'] . 'models/feedback.php';
+require_once __DIR__ . '/../models/feedback.php';
 
 function get_user_feedback() : array
 {

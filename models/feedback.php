@@ -34,7 +34,7 @@ class Feedback
     foreach ($result_array as $feedback) {
       $ret[] = new Feedback(
         $feedback['id'],
-        $feedback['titile'],
+        $feedback['title'],
         $feedback['message'],
         $feedback['request_type'],
         $feedback['rating'],

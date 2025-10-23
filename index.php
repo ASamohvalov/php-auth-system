@@ -2,10 +2,12 @@
 session_start();
 
 require_once 'config.php';
-config_init();
-
 require_once 'requests/get_user_feedback.php';
+require_once 'utils/functions.php';
 
+
+// main
+config_init();
 
 if (!isset($_SESSION['user'])) {
   header('Location: views/sign_in.php');
@@ -60,13 +62,20 @@ ob_start();
     <?= $_SESSION['msg']['success'] ?>
   </div>
 
-  <div class="">
+  <div class="mt-5">
+    <h2>Оставленные формы</h2>
     <?php foreach ($feedback_array as $feedback): ?>
-    <div class="border">
-      <span><?= $feedback->title ?></span>
-      <span><?= $feedback->message ?></span>
-      <span><?= $feedback->request_type ?></span>
-      <span><?= $feedback->rating ?></span>
+    <div class="mt-3 border border-secondary rounded-4 p-3 text-break">
+      <div class="h4"><?= $feedback->title ?></div>
+      <div class="mb-2"><?= $feedback->message ?></div>
+      <div>
+        <span class="text-secondary">Тип обращения - </span>
+        <?= en_request_type_to_ru($feedback->request_type) ?>
+      </div>
+      <div>
+        <span class="text-secondary">Оценка сайта - </span>
+        <?= int_rating_to_str($feedback->rating) ?>
+      </div>
     </div>   
     <?php endforeach; ?> 
   </div>
