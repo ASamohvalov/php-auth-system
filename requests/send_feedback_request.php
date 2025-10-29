@@ -1,8 +1,8 @@
 <?php
+session_start();
 
 require_once '../models/feedback.php';
-
-session_start();
+require_once '../models/feedback_like.php';
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   header('Location: ../index.php');
@@ -19,6 +19,18 @@ $feedback = new Feedback(
 );
 
 $feedback->save();
+
+// todo
+// change save method in feedback
+// set id in object after save
+if ($_POST['like_design']) {
+}
+if ($_POST['like_speed']) {
+}
+if ($_POST['like_content']) {
+}
+if ($_POST['like_convenience']) {
+}
 
 $_SESSION['msg']['success'] = 'сообщение успешно отправлено';
 

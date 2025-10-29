@@ -31,6 +31,14 @@ ob_start();
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Что понравилось на сайте</label><br>
+      <input class="form-check-input" type="checkbox" name="like_design"> Дизайн
+      <input class="form-check-input" type="checkbox" name="like_speed"> Скорость работы 
+      <input class="form-check-input" type="checkbox" name="like_content"> Контент 
+      <input class="form-check-input" type="checkbox" name="like_convenience"> Удобство навигации
+    </div>
+
+    <div class="mb-3">
       <label class="form-label">Тип обращения</label><br>
       <input type="radio" name="type" value="question" required> Вопрос
       <input type="radio" name="type" value="complaint" required> Жалоба
@@ -46,6 +54,7 @@ ob_start();
         <option value="2">Плохо</option>
       </select>
     </div>
+
 
     <div class="form-check mb-3">
       <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
