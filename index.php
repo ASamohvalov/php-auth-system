@@ -57,7 +57,7 @@ ob_start();
   </form>
 
   <div class="text-success mt-4" style="width: 500px">
-    <?= $_SESSION['msg']['success'] ?>
+    <?= isset($_SESSION['msg']['success']) ? $_SESSION['msg']['success'] : '' ?>
   </div>
 
   <div class="mt-5">
@@ -85,5 +85,7 @@ $page_title = 'обратная связь';
 
 require_once 'views/layouts/base_layout.php';
 
-unset($_SESSION['msg']);
+if (isset($_SESSION['msg'])) {
+  unset($_SESSION['msg']);
+}
 ?>

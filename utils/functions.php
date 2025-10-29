@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 function int_rating_to_str(int $rating) : string
