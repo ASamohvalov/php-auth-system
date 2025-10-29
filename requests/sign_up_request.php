@@ -8,21 +8,26 @@ function validation(User $user) : void
   $is_error = false;
   if (empty($user->email)) {
     $_SESSION['msg']['error']['email'] = 'почта должна быть заполнена';
+    error_log('12312');
     $is_error = true;
   }
   if (empty($user->password)) {
     $_SESSION['msg']['error']['password'] = 'пароль должен быть заполнен';
+    error_log('12312');
     $is_error = true;
   }
   if (empty($user->name)) {
     $_SESSION['msg']['error']['name'] = 'имя должно быть заполнено';
+    error_log('12312');
     $is_error = true;
   }
   if (empty($user->surname)) {
     $_SESSION['msg']['error']['surname'] = 'фамилия должна быть заполнена';
+    error_log('12312');
     $is_error = true;
   }
   if ($is_error) {
+    error_log('loc');
     header('Location: ../views/sign_up.php');
     exit;
   }  

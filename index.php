@@ -5,8 +5,6 @@ require_once 'config.php';
 require_once 'requests/get_user_feedback.php';
 require_once 'utils/functions.php';
 
-
-// main
 config_init();
 
 if (!isset($_SESSION['user'])) {

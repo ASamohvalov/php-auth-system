@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 function int_rating_to_str(int $rating) : string
 {
   switch ($rating) {
@@ -28,4 +30,13 @@ function en_request_type_to_ru(string $req_type) : string
   default:
     return '';
   }
+}
+
+function get_error_msg(string $key) : string
+{
+  if (!isset($_SESSION['msg']['error'][$key])) {
+    error_log('empty ' . $key);
+    return ''; 
+  }
+  return $_SESSION['msg']['error'][$key];
 }
