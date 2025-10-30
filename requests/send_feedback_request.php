@@ -20,16 +20,21 @@ $feedback = new Feedback(
 
 $feedback->save();
 
-// todo
-// change save method in feedback
-// set id in object after save
 if ($_POST['like_design']) {
+  $feedback_like = new FeedbackLike(null, $feedback->id, 'Дизайн');
+  $feedback_like->save();
 }
 if ($_POST['like_speed']) {
+  $feedback_like = new FeedbackLike(null, $feedback->id, 'Скорость работы');
+  $feedback_like->save();
 }
 if ($_POST['like_content']) {
+  $feedback_like = new FeedbackLike(null, $feedback->id, 'Контент');
+  $feedback_like->save();
 }
 if ($_POST['like_convenience']) {
+  $feedback_like = new FeedbackLike(null, $feedback->id, 'Удобство навигации');
+  $feedback_like->save();
 }
 
 $_SESSION['msg']['success'] = 'сообщение успешно отправлено';

@@ -12,7 +12,7 @@ class FeedbackLike
   public function save() : void
   {
     $sql_insert = 'insert into feedback_likes (feedback_id, name) values (:feedback_id, :name)';
-    perfom($sql_insert, [
+    $this->id = insert($sql_insert, [
       'feedback_id' => $this->feedback_id,
       'name' => $this->name
     ]); 

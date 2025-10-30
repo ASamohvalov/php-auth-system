@@ -39,3 +39,22 @@ function perfom_and_get(string $sql, array $params = []) : array
   }
 }
 
+/**
+* @desc insert queries with return id
+* @throw RuntimeException
+*/
+function insert(string $sql, array $params = []) : int
+{
+  try {
+    $conn = get_connection();
+    $stmt = $conn->prepare($sql);
+    foreach ($params as $key => $value) {
+      $stmt->bindValue($key, $value);
+    }
+    $stmt->execute();
+    return $conn->lastInsertId();
+  } catch (PDOException $e) {
+    throw new RuntimeException($e->getMessage());
+  }
+}
+

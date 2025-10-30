@@ -16,7 +16,7 @@ class Feedback
   {
     $sql_insert = 'insert into feedback (title, message, request_type, rating, user_id)' 
       . 'values (:title, :message, :request_type, :rating, :user_id)';
-    perfom($sql_insert, [
+    $this->id = insert($sql_insert, [
       'title' => $this->title,
       'message' => $this->message,
       'request_type' => $this->request_type,
