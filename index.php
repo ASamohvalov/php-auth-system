@@ -55,7 +55,6 @@ ob_start();
       </select>
     </div>
 
-
     <div class="form-check mb-3">
       <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
       <label class="form-check-label" for="consent">Согласен с обработкой данных</label>
@@ -72,18 +71,24 @@ ob_start();
   <div class="mt-5">
     <h2>Оставленные формы</h2>
     <?php foreach ($feedback_array as $feedback): ?>
-    <div class="mt-3 border border-secondary rounded-4 p-3 text-break">
-      <div class="h4"><?= $feedback->title ?></div>
-      <div class="mb-2"><?= $feedback->message ?></div>
-      <div>
-        <span class="text-secondary">Тип обращения - </span>
-        <?= en_request_type_to_ru($feedback->request_type) ?>
-      </div>
-      <div>
-        <span class="text-secondary">Оценка сайта - </span>
-        <?= int_rating_to_str($feedback->rating) ?>
-      </div>
-    </div>   
+      <div class="mt-3 border border-secondary rounded-4 p-3 text-break">
+        <div class="h4"><?= $feedback->title ?></div>
+        <div class="mb-2"><?= $feedback->message ?></div>
+        <div>
+          <span class="text-secondary">Тип обращения - </span>
+          <?= en_request_type_to_ru($feedback->request_type) ?>
+        </div>
+        <div>
+          <span class="text-secondary">Оценка сайта - </span>
+          <?= int_rating_to_str($feedback->rating) ?>
+        </div>
+        <div>
+          <span class="text-secondary">Что понравилось на сайте - </span>
+          <?= !empty($feedback->feedback_likes) 
+              ? implode(', ', array_column($feedback->feedback_likes, 'name'))
+              : 'Ничего' ?>
+        </div>
+      </div>   
     <?php endforeach; ?> 
   </div>
 </div>

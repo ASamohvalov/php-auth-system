@@ -15,7 +15,8 @@ $feedback = new Feedback(
   $_POST['message'],
   $_POST['type'],
   $_POST['rating'],
-  $_SESSION['user']['id']
+  $_SESSION['user']['id'],
+  null
 );
 
 $feedback->save();
