@@ -50,6 +50,6 @@ $page_title = 'регистрация';
 require_once 'layouts/base_layout.php';
 
 if (isset($_SESSION['msg']['error'])) {
-    unset($_SESSION['msg']['error']);
+  unset($_SESSION['msg']['error']);
 }
 ?>

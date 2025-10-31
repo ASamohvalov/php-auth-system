@@ -34,6 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   exit;
 }
 
+if (!is_db_connected()) {
+  $_SESSION['msg']['error']['global'] = 'ошибка подключения к базе данных, импортируйте бд из файла assets/db/php_auth_system\nи скорректируйте данные о подключении к бд из файла db/connection.php';
+  header('Location: ../views/error.php');
+  exit;
+}
+
 $user = new User(
   null,
   $_POST['email'],

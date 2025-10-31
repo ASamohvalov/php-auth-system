@@ -2,6 +2,7 @@
 session_start();
 
 require_once '../models/user.php';
+require_once '../utils/functions.php';
 
 function validation(string $email, string $password) : void
 {
@@ -23,6 +24,12 @@ function validation(string $email, string $password) : void
 // main
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   header('Location: ../views/sign_in.php');
+  exit;
+}
+
+if (!is_db_connected()) {
+  $_SESSION['msg']['error']['global'] = 'ошибка подключения к базе данных, импортируйте бд из файла assets/db/php_auth_system и скорректируйте данные о подключении к бд из файла db/connection.php';
+  header('Location: ../views/error.php');
   exit;
 }
 

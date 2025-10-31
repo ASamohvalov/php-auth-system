@@ -11,8 +11,8 @@ function get_connection() : PDO
     $host = 'localhost';
     $port = 3306;
     $name = 'php_auth_system';
-    $user = 'phpuser';
-    $password = 'secret';
+    $user = 'root';
+    $password = '';
 
     $conn = new PDO(
       "mysql:host=$host;port=$port;dbname=$name", 
