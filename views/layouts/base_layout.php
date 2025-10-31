@@ -1,9 +1,5 @@
 <?php 
 session_start();
-
-if (!isset($_SESSION['config'])) {
-  header('Location: ../index.php');
-}
 ?>
 
 <!DOCTYPE html>

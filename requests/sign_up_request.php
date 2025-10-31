@@ -2,6 +2,7 @@
 session_start();
 
 require_once '../models/user.php';
+require_once '../utils/functions.php';
 
 function validation(User $user) : void
 {
