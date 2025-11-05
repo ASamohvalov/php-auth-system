@@ -11,30 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
 $feedback = new Feedback(
   null,
-  $_POST['title'],
-  $_POST['message'],
+  htmlspecialchars($_POST['title']),
+  htmlspecialchars($_POST['message']),
   $_POST['type'],
   $_POST['rating'],
-  $_SESSION['user']['id'],
-  null
+  $_SESSION['user']['id']
 );
 
 $feedback->save();
 
-if ($_POST['like_design']) {
-  $feedback_like = new FeedbackLike(null, $feedback->id, 'Дизайн');
-  $feedback_like->save();
-}
-if ($_POST['like_speed']) {
-  $feedback_like = new FeedbackLike(null, $feedback->id, 'Скорость работы');
-  $feedback_like->save();
-}
-if ($_POST['like_content']) {
-  $feedback_like = new FeedbackLike(null, $feedback->id, 'Контент');
-  $feedback_like->save();
-}
-if ($_POST['like_convenience']) {
-  $feedback_like = new FeedbackLike(null, $feedback->id, 'Удобство навигации');
+foreach ($_POST['liked_arr'] as $feedback_like) {
+  $feedback_like = new FeedbackLike(null, $feedback->id, $feedback_like);
   $feedback_like->save();
 }
 

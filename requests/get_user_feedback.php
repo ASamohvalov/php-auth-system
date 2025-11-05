@@ -6,4 +6,3 @@ function get_user_feedback() : array
 {
   return Feedback::get_user_feedbacks($_SESSION['user']['id']); 
 }
-

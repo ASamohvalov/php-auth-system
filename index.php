@@ -34,10 +34,10 @@ ob_start();
 
       <div class="mb-3">
         <label class="form-label">Что понравилось на сайте</label><br>
-        <input class="form-check-input" type="checkbox" name="like_design"> Дизайн
-        <input class="form-check-input" type="checkbox" name="like_speed"> Скорость работы 
-        <input class="form-check-input" type="checkbox" name="like_content"> Контент 
-        <input class="form-check-input" type="checkbox" name="like_convenience"> Удобство навигации
+        <input class="form-check-input" type="checkbox" name="liked_arr[]" value="design"> Дизайн
+        <input class="form-check-input" type="checkbox" name="liked_arr[]" value="speed"> Скорость работы 
+        <input class="form-check-input" type="checkbox" name="liked_arr[]" value="content"> Контент 
+        <input class="form-check-input" type="checkbox" name="liked_arr[]" value="convenience"> Удобство навигации
       </div>
 
       <div class="mb-3">

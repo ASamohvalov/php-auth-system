@@ -9,7 +9,7 @@ function get_connection() : PDO
   static $conn = null;
   if ($conn === null) {
     $host = 'localhost';
-    $port = 3306;
+    $port = 3307;
     $name = 'php_auth_system';
     $user = 'root';
     $password = '';

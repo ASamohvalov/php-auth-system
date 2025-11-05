@@ -43,10 +43,10 @@ if (!is_db_connected()) {
 
 $user = new User(
   null,
-  $_POST['email'],
-  $_POST['password'],
-  $_POST['name'],
-  $_POST['surname']
+  htmlspecialchars($_POST['email']),
+  htmlspecialchars($_POST['password']),
+  htmlspecialchars($_POST['name']),
+  htmlspecialchars($_POST['surname'])
 );
 validation($user);
 

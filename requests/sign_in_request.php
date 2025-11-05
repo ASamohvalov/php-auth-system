@@ -33,8 +33,8 @@ if (!is_db_connected()) {
   exit;
 }
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = htmlspecialchars($_POST['email']);
+$password = htmlspecialchars($_POST['password']);
 
 validation($email, $password);
 
